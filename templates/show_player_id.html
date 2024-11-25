@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="display">
+        <div>
+            選手のIDは、「{{ player_id }}」です。
+        </div>
+        <a href="{{ url_for('top') }}">トップ画面へ</a>
+    </div>
+{% endblock %}

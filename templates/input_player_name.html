@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="display">
+        こんにちは！{{ app_name }}へようこそ。
+        <br>
+        MLBの選手名を入力してください。
+        <br>
+        <form action="{{ url_for('input_player_name') }}" method="post">
+            <input type="text" name="player_name_first" size="30">
+            <input type="text" name="player_name_last" size="30">
+            <input type="submit" value="入力">
+        </form>
+    </div>
+{% endblock %}
