@@ -1,3 +1,1 @@
-LOG_FILE = 'appserver.log'
-PORT = 5000
-DEBUG = True
+FLASK_ENV='development' # 本番: 'production', テスト: 'testing'
