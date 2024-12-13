@@ -12,6 +12,11 @@ from flask_migrate import Migrate
 from config import load_config
 
 
+# create object that represents the database
+db = SQLAlchemy()
+# create object that represents database migration engine
+migrate = Migrate()
+
 
 def create_app():
 
@@ -21,16 +26,12 @@ def create_app():
     # load config
     app.config.from_object(load_config())
 
-    # init SQLAlchemy so we can use it later in our models
-    db = SQLAlchemy(app)
-
     # init database
     db.init_app(app)
 
-    # create database migration engine
-    migrate = Migrate(app, db)
+    # init migrate
+    migrate.init_app(app, db)
 
-    # baseball_appディレクトリをモジュール検索パスに追加
     # add baseball_app dir to module search path
     sys.path.append(os.path.dirname(__file__))
 
@@ -39,3 +40,7 @@ def create_app():
     app.register_blueprint(auth_blueprint)
 
     return app
+
+
+from baseball_app.controllers.auth import route
+from baseball_app.models import table
